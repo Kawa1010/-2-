@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鬼が追ってくる 3D</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
   <!-- 3Dゲーム画面 -->
-  <div id="game-canvas"></div>
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- 見つかった時の赤フラッシュ演出 -->
+  <div id="danger-flash"></div>
 
   <!-- ゲーム中のUI -->
   <div id="hud" class="hidden">
@@ -23,7 +25,7 @@
       <div id="stamina-bar"></div>
     </div>
     <div id="controls-hint">
-      移動: W A S D / 矢印キー ｜ 視点: マウス移動 ｜ ダッシュ: Shift
+      移動: W A S D / 矢印キー ｜ 視点: マウス移動（または ← → キー） ｜ ダッシュ: Shift
     </div>
   </div>
 
@@ -33,9 +35,10 @@
       <h1 id="overlay-title">鬼が追ってくる</h1>
       <p id="overlay-desc">
         迷路に散らばる「星」を10個集めろ。<br>
-        角の向こうに潜む鬼に見つかると猛追してくる！
+        角の向こうに潜む鬼に見つかると、猛スピードで襲いかかってくる！
       </p>
-      <button id="start-btn">PLAY（ホラーBGMが流れます）</button>
+      <button id="start-btn">ゲーム開始（BGMが流れます）</button>
+      <p class="credit">BGM：死刑実習 / H/MIX GALLERY（秋山裕和）</p>
     </div>
   </div>
 
